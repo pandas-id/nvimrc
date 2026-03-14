@@ -26,6 +26,15 @@
 | `<leader>fg` | Live grep (search in files) |
 | `<leader>fr` | Recent files |
 | `<leader>fh` | Help tags |
+| `<leader>ft` | Find TODOs |
+
+---
+
+## 🔎 Search & Replace
+
+| Keybinding | Action | Source |
+|------------|--------|--------|
+| `<leader>sr` | Search and Replace (Spectre) | spectre.nvim |
 
 ---
 
@@ -43,7 +52,6 @@
 | `<leader>D` | Buffer diagnostics | lspsaga |
 
 
-
 ## 🩺 Diagnostics
 
 | Keybinding | Action | Source |
@@ -54,16 +62,31 @@
 
 ---
 
-## 🔀 Git (Gitsigns)
+## 🔀 Git (Gitsigns & Neogit)
 
-| Keybinding | Action |
-|------------|--------|
-| `gs` | Stage hunk |
-| `gu` | Undo stage hunk |
-| `gh` | Preview hunk |
-| `]h` | Next hunk |
-| `[h` | Previous hunk |
-| `<leader>gb` | Toggle line blame |
+| Keybinding | Action | Source |
+|------------|--------|--------|
+| `gs` | Stage hunk | gitsigns |
+| `gu` | Undo stage hunk | gitsigns |
+| `gh` | Preview hunk | gitsigns |
+| `]h` | Next hunk | gitsigns |
+| `[h` | Previous hunk | gitsigns |
+| `<leader>gb` | Toggle line blame | gitsigns |
+| `<leader>gg` | Open Neogit | neogit |
+| `<leader>gc` | Git commit | neogit |
+| `<leader>gp` | Git push | neogit |
+
+---
+
+## 📂 File Explorer
+
+| Keybinding | Action | Source |
+|------------|--------|--------|
+| `-` | Open parent directory | oil.nvim |
+| `<C-n>` | Toggle file tree | sfm.nvim |
+| `<leader>y` | Open Yazi at current file | yazi.nvim |
+| `<leader>cw` | Open Yazi in working directory | yazi.nvim |
+| `<C-Up>` | Resume last Yazi session | yazi.nvim |
 
 ---
 
@@ -100,6 +123,16 @@
 
 ---
 
+## 📝 TODOs
+
+| Keybinding | Action | Source |
+|------------|--------|--------|
+| `]t` | Next TODO | todo-comments |
+| `[t` | Previous TODO | todo-comments |
+| `<leader>ft` | Find TODOs (Telescope) | todo-comments |
+
+---
+
 ## 💬 Noice (Notifications)
 
 | Keybinding | Action |
@@ -113,11 +146,50 @@
 
 ---
 
+## 🐛 Debugging (DAP)
+
+| Keybinding | Action | Source |
+|------------|--------|--------|
+| `<leader>db` | Toggle breakpoint | dap |
+| `<leader>dc` | Continue | dap |
+| `<leader>di` | Step into | dap |
+| `<leader>do` | Step over | dap |
+| `<leader>du` | Toggle DAP UI | dap |
+
+---
+
+## ▶️ Code Runner
+
+| Keybinding | Action | Source |
+|------------|--------|--------|
+| `<leader>rr` | Run code | code_runner |
+| `<leader>rf` | Run file | code_runner |
+
+---
+
 ## 🤖 AI (CodeCompanion)
 
 | Keybinding | Action | Mode |
 |------------|--------|------|
 | `<leader>cm` | Generate commit (Indonesian) | n, v |
+
+---
+
+## 🔷 Laravel
+
+| Keybinding | Action |
+|------------|--------|
+| `<leader>ll` | Laravel Picker |
+| `<leader>la` | Artisan Picker |
+| `<leader>lr` | Routes Picker |
+| `<leader>lm` | Make Picker |
+| `<leader>lc` | Commands Picker |
+| `<leader>lo` | Resources Picker |
+| `<leader>lp` | Command Center |
+| `<leader>lh` | Documentation |
+| `<leader>lt` | Actions Picker |
+| `<C-g>` | View Finder |
+| `gf` | Go to file (Laravel-aware) |
 
 ---
 
@@ -129,12 +201,21 @@
 
 ---
 
+## 🎬 Screenkey
+
+| Keybinding | Action |
+|------------|--------|
+| `<leader>sk` | Toggle Screenkey |
+
+---
+
 ## 🔧 Misc
 
 | Keybinding | Action | Source |
 |------------|--------|--------|
 | `<leader>ac` | Auto commit | mappings |
-| `<leader>tp` | Triforce profile | triforce |
+| `zR` | Open all folds | nvim-ufo |
+| `zM` | Close all folds | nvim-ufo |
 
 ---
 
