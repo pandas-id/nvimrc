@@ -1,9 +1,11 @@
 return {
 	"dinhhuy258/sfm.nvim",
-
-	keys = { "<c-n>" },
+	cmd = "SFMToggle",
+	keys = {
+		{ "<c-n>", "<cmd>SFMToggle<cr>", desc = "Toggle file tree" },
+	},
 	dependencies = {
-		{ "dinhhuy258/sfm-telescope.nvim" },
+		{ "dinhhuy258/sfm-telescope.nvim", lazy = true },
 	},
 	config = function()
 		local sfm = require("sfm").setup({
@@ -11,9 +13,6 @@ return {
 				width = 40,
 			},
 		})
-
 		sfm:load_extension("sfm-telescope")
-
-		vim.keymap.set("n", "<c-n>", "<cmd>SFMToggle<cr>")
 	end,
 }

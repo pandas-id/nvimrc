@@ -1,13 +1,16 @@
 return {
 	"CRAG666/code_runner.nvim",
-	keys = "<leader>rr",
+	cmd = { "RunCode", "RunFile", "RunProject" },
+	keys = {
+		{ "<leader>rr", "<cmd>RunCode<cr>", desc = "Run code" },
+		{ "<leader>rf", "<cmd>RunFile<cr>", desc = "Run file" },
+	},
 	config = function()
 		require("code_runner").setup({
 			mode = "term",
-
-			better_term = { -- Toggle mode replacement
-				clean = false, -- Clean terminal before launch
-				number = nil, -- Use nil for dynamic number and set init
+			better_term = {
+				clean = false,
+				number = nil,
 				init = nil,
 			},
 			filetype = {
@@ -28,7 +31,5 @@ return {
 				r = "Rscript $fileName",
 			},
 		})
-
-		vim.keymap.set("n", "<leader>rr", "<cmd>RunCode<cr>", { noremap = true, silent = false })
 	end,
 }

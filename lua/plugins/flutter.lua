@@ -1,9 +1,10 @@
 return {
 	"nvim-flutter/flutter-tools.nvim",
-	lazy = false,
+	ft = "dart",
+	cmd = { "FlutterRun", "FlutterDevices", "FlutterEmulators", "FlutterReload", "FlutterRestart" },
 	dependencies = {
-		"nvim-lua/plenary.nvim",
-		"stevearc/dressing.nvim", -- optional for vim.ui.select
+		{ "nvim-lua/plenary.nvim", lazy = true },
+		{ "stevearc/dressing.nvim", lazy = true },
 	},
 	config = true,
 }

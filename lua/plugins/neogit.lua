@@ -1,15 +1,16 @@
 return {
 	"NeogitOrg/neogit",
 	dependencies = {
-		"sindrets/diffview.nvim", -- optional - Diff integration
+		"nvim-lua/plenary.nvim",
+		{ "sindrets/diffview.nvim", lazy = true },
 	},
-	cmd = { "Neogit" },
-	keys = { "<leader>g" },
+	cmd = "Neogit",
+	keys = {
+		{ "<leader>gg", "<cmd>Neogit<cr>", desc = "Open Neogit" },
+		{ "<leader>gc", "<cmd>Neogit commit<cr>", desc = "Git commit" },
+		{ "<leader>gp", "<cmd>Neogit push<cr>", desc = "Git push" },
+	},
 	config = function()
-		-- init.lua
-		local neogit = require("neogit")
-		neogit.setup({})
-
-		vim.keymap.set("n", "<leader>gv", "<cmd>Neogit<cr>", { noremap = true, silent = true })
+		require("neogit").setup({})
 	end,
 }
