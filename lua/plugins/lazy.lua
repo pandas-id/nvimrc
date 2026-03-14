@@ -17,116 +17,94 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Setup lazy.nvim
 require("lazy").setup({
-
+	-- Core dependencies (lazy loaded when needed)
 	{ "nvim-tree/nvim-web-devicons", lazy = true },
+	{ "nvim-lua/plenary.nvim", lazy = true },
+	{ "kevinhwang91/promise-async", lazy = true },
+	{ "MunifTanjim/nui.nvim", lazy = true },
 
-	{ "wakatime/vim-wakatime", lazy = false },
+	-- Time tracking (needs to load early)
+	{ "wakatime/vim-wakatime", event = "VeryLazy" },
 
-	{ "kevinhwang91/promise-async", lazy = false },
-
-	{ "MunifTanjim/nui.nvim", lazy = false },
-
-	-- { "github/copilot.vim" },
-
-	-- require("plugins.onedark"),
-
-	require("plugins.kanagawa-paper"),
-
+	-- Colorschemes (only one should be active)
+	-- require("plugins.kanagawa-paper"),
 	require("plugins.everblush"),
 
+	-- Search & Replace
 	require("plugins.spectre"),
 
+	-- Fuzzy finder
 	require("plugins.telescope"),
 
+	-- File explorers
 	require("plugins.sfm"),
-
-	require("plugins.mini-pairs"),
-
-	-- require("plugins.mini-comment"),
-
-	{
-		"numToStr/Comment.nvim",
-		opts = {
-			-- add any options here
-		},
-	},
-
-	require("plugins.blink-cmp"),
-
-	-- require("plugins.cmp"),
-
-	require("plugins.autosave"),
-
-	require("plugins.treesitter"),
-
-	require("plugins.code_runner"),
-
-	require("plugins.flash"),
-
-	require("plugins.gitsigns"),
-
-	require("plugins.lspsaga"),
-
-	-- require("plugins.mini-tabline"),
-
-	require("plugins.codecompanion"),
-
-	require("plugins.neogit"),
-
-	require("plugins.which-key"),
-
-	require("plugins.nvim-surround"),
-
-	-- require("plugins.auto-session"),
-
-	require("plugins.conform"),
-
-	require("plugins.screenkey"),
-
+	require("plugins.oil"),
 	require("plugins.yazi"),
 
+	-- Editing essentials
+	require("plugins.mini-pairs"),
+	{
+		"numToStr/Comment.nvim",
+		event = { "BufReadPost", "BufNewFile" },
+		opts = {},
+	},
+	require("plugins.nvim-surround"),
+
+	-- Completion & Snippets
+	require("plugins.blink-cmp"),
+
+	-- Auto save
+	require("plugins.autosave"),
+
+	-- Syntax & Parsing
+	require("plugins.treesitter"),
+
+	-- Code execution
+	require("plugins.code_runner"),
+
+	-- Motion
+	require("plugins.flash"),
+
+	-- Git
+	require("plugins.gitsigns"),
+	require("plugins.neogit"),
+
+	-- LSP
+	require("plugins.lspsaga"),
+	require("plugins.conform"),
+
+	-- AI
+	require("plugins.codecompanion"),
 	require("plugins.copilot"),
 
+	-- Keybinding help
+	require("plugins.which-key"),
+
+	-- Demo/Recording
+	require("plugins.screenkey"),
+
+	-- Folding
 	require("plugins.nvim-ufo"),
 
-	-- require("plugins.smear-cursor"),
-
+	-- Framework specific
 	require("plugins.flutter"),
-
 	require("plugins.laravel"),
 
+	-- Visual enhancements
 	require("plugins.hlchunk"),
-
 	require("plugins.lualine"),
-
 	require("plugins.colorizer"),
 
-	require("plugins.oil"),
-
-	require("plugins.csvview"),
-
+	-- Comments & Notes
 	require("plugins.todo-comments"),
 
-	require("plugins.zen-mode"),
-
+	-- Markdown
 	require("plugins.markdown-table-mode"),
-
 	require("plugins.render-markdown"),
 
+	-- Debugging
 	require("plugins.dap"),
 
+	-- UI enhancements
 	require("plugins.noice"),
-
-	{
-		"gisketch/triforce.nvim",
-		dependencies = { "nvzone/volt" },
-		config = function()
-			require("triforce").setup({
-				-- Optional: Add your configuration here
-				keymap = {
-					show_profile = "<leader>tp", -- Open profile with <leader>tp
-				},
-			})
-		end,
-	},
 })
