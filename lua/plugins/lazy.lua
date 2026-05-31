@@ -74,8 +74,9 @@ require("lazy").setup({
 	require("plugins.conform"),
 
 	-- AI
-	require("plugins.codecompanion"),
-	require("plugins.copilot"),
+	-- require("plugins.codecompanion"),
+	-- require("plugins.copilot"),
+	-- require("plugins.avante"),
 
 	-- Keybinding help
 	require("plugins.which-key"),
@@ -103,8 +104,10 @@ require("lazy").setup({
 	require("plugins.render-markdown"),
 
 	-- Debugging
-	require("plugins.dap"),
+	-- require("plugins.dap"),
 
 	-- UI enhancements
 	require("plugins.noice"),
+
+	require("plugins.persistance"),
 })

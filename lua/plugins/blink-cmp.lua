@@ -95,7 +95,7 @@ return {
 
 			-- Ghost text preview
 			ghost_text = {
-				enabled = true,
+				enabled = false,
 			},
 
 			-- Accept behavior
@@ -150,3 +150,4 @@ return {
 	},
 	opts_extend = { "sources.default" },
 }
+
