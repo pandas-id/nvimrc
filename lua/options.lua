@@ -43,7 +43,7 @@ o.updatetime = 250
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append("<>[]hl")
 
--- opt.guicursor = "n-v-c-i:block"
+opt.guicursor = "n-v-c-i:block"
 
 -- disable some default providers
 g.loaded_node_provider = 0
