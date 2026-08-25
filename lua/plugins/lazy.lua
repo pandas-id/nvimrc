@@ -1,127 +1,127 @@
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-	if vim.v.shell_error ~= 0 then
-		vim.api.nvim_echo({
-			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-			{ out, "WarningMsg" },
-			{ "\nPress any key to exit..." },
-		}, true, {})
-		vim.fn.getchar()
-		os.exit(1)
-	end
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out,                            "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
 end
 vim.opt.rtp:prepend(lazypath)
 
 -- Setup lazy.nvim
 require("lazy").setup({
-	-- Core dependencies (lazy loaded when needed)
-	{ "nvim-tree/nvim-web-devicons", lazy = true },
-	{ "nvim-lua/plenary.nvim", lazy = true },
-	{ "kevinhwang91/promise-async", lazy = true },
-	{ "MunifTanjim/nui.nvim", lazy = true },
+  -- Core dependencies (lazy loaded when needed)
+  { "nvim-tree/nvim-web-devicons", lazy = true },
+  { "nvim-lua/plenary.nvim",       lazy = true },
+  { "kevinhwang91/promise-async",  lazy = true },
+  { "MunifTanjim/nui.nvim",        lazy = true },
 
-	-- Time tracking (needs to load early)
-	{ "wakatime/vim-wakatime", event = "VeryLazy" },
+  -- Time tracking (needs to load early)
+  { "wakatime/vim-wakatime",       event = "VeryLazy" },
 
-	-- Colorschemes (only one should be active)
-	-- require("plugins.kanagawa-paper"),
-	require("plugins.everblush"),
+  -- Colorschemes (only one should be active)
+  -- require("plugins.kanagawa-paper"),
+  require("plugins.everblush"),
 
-	-- Search & Replace
-	require("plugins.spectre"),
+  -- Search & Replace
+  require("plugins.spectre"),
 
-	-- Fuzzy finder
-	require("plugins.telescope"),
+  -- Fuzzy finder
+  require("plugins.telescope"),
 
-	-- File explorers
-	require("plugins.sfm"),
-	require("plugins.oil"),
-	require("plugins.yazi"),
+  -- File explorers
+  require("plugins.sfm"),
+  require("plugins.oil"),
+  require("plugins.yazi"),
 
-	-- Editing essentials
-	require("plugins.mini-pairs"),
-	-- {
-	-- 	"numToStr/Comment.nvim",
-	-- 	event = { "BufReadPost", "BufNewFile" },
-	-- 	opts = {},
-	-- },
-	require("plugins.nvim-surround"),
+  -- Editing essentials
+  require("plugins.mini-pairs"),
+  -- {
+  -- 	"numToStr/Comment.nvim",
+  -- 	event = { "BufReadPost", "BufNewFile" },
+  -- 	opts = {},
+  -- },
+  require("plugins.nvim-surround"),
 
-	-- Completion & Snippets
-	require("plugins.blink-cmp"),
+  -- Completion & Snippets
+  require("plugins.blink-cmp"),
 
-	-- Auto save
-	require("plugins.autosave"),
+  -- Auto save
+  require("plugins.autosave"),
 
-	-- Syntax & Parsing
-	require("plugins.treesitter"),
-	-- {
-	-- 	"romus204/tree-sitter-manager.nvim",
-	-- 	dependencies = {}, -- tree-sitter CLI must be installed system-wide
-	-- 	config = function()
-	-- 		require("tree-sitter-manager").setup({
-	-- 			-- Default Options
-	-- 			-- ensure_installed = {}, -- list of parsers to install at the start of a neovim session. If set to "all", install all parsers.
-	-- 			-- border = nil, -- border style for the window (e.g. "rounded", "single"), if nil, use the default border style defined by 'vim.o.winborder'. See :h 'winborder' for more info.
-	-- 			-- auto_install = false, -- if enabled, install missing parsers when editing a new file
-	-- 			-- highlight = true, -- treesitter highlighting is enabled by default
-	-- 			-- languages = {}, -- override or add new parser sources
-	-- 		})
-	-- 	end,
-	-- },
+  -- Syntax & Parsing
+  -- require("plugins.treesitter"),
+  {
+    "romus204/tree-sitter-manager.nvim",
+    dependencies = {}, -- tree-sitter CLI must be installed system-wide
+    config = function()
+      require("tree-sitter-manager").setup({
+        -- Default Options
+        -- ensure_installed = {}, -- list of parsers to install at the start of a neovim session. If set to "all", install all parsers.
+        -- border = nil, -- border style for the window (e.g. "rounded", "single"), if nil, use the default border style defined by 'vim.o.winborder'. See :h 'winborder' for more info.
+        -- auto_install = false, -- if enabled, install missing parsers when editing a new file
+        -- highlight = true, -- treesitter highlighting is enabled by default
+        -- languages = {}, -- override or add new parser sources
+      })
+    end,
+  },
 
-	-- Code execution
-	require("plugins.code_runner"),
+  -- Code execution
+  require("plugins.code_runner"),
 
-	-- Motion
-	require("plugins.flash"),
+  -- Motion
+  require("plugins.flash"),
 
-	-- Git
-	require("plugins.gitsigns"),
-	require("plugins.neogit"),
+  -- Git
+  require("plugins.gitsigns"),
+  require("plugins.neogit"),
 
-	-- LSP
-	require("plugins.lspsaga"),
-	require("plugins.conform"),
+  -- LSP
+  require("plugins.lspsaga"),
+  require("plugins.conform"),
 
-	-- AI
-	-- require("plugins.codecompanion"),
-	-- require("plugins.copilot"),
-	-- require("plugins.avante"),
+  -- AI
+  -- require("plugins.codecompanion"),
+  -- require("plugins.copilot"),
+  -- require("plugins.avante"),
 
-	-- Keybinding help
-	require("plugins.which-key"),
+  -- Keybinding help
+  require("plugins.which-key"),
 
-	-- Demo/Recording
-	require("plugins.screenkey"),
+  -- Demo/Recording
+  require("plugins.screenkey"),
 
-	-- Folding
-	require("plugins.nvim-ufo"),
+  -- Folding
+  require("plugins.nvim-ufo"),
 
-	-- Framework specific
-	require("plugins.flutter"),
-	require("plugins.laravel"),
+  -- Framework specific
+  require("plugins.flutter"),
+  require("plugins.laravel"),
 
-	-- Visual enhancements
-	require("plugins.hlchunk"),
-	require("plugins.lualine"),
-	require("plugins.colorizer"),
+  -- Visual enhancements
+  require("plugins.hlchunk"),
+  require("plugins.lualine"),
+  require("plugins.colorizer"),
 
-	-- Comments & Notes
-	require("plugins.todo-comments"),
+  -- Comments & Notes
+  require("plugins.todo-comments"),
 
-	-- Markdown
-	require("plugins.markdown-table-mode"),
-	require("plugins.render-markdown"),
+  -- Markdown
+  require("plugins.markdown-table-mode"),
+  require("plugins.render-markdown"),
 
-	-- Debugging
-	-- require("plugins.dap"),
+  -- Debugging
+  -- require("plugins.dap"),
 
-	-- UI enhancements
-	require("plugins.noice"),
+  -- UI enhancements
+  require("plugins.noice"),
 
-	require("plugins.persistance"),
+  require("plugins.persistance"),
 })

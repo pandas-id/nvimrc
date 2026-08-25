@@ -17,19 +17,6 @@ return {
 	},
 	version = "1.*",
 
-	config = function(_, opts)
-		-- Highlight overrides
-		vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection", { link = "PmenuSel" })
-		vim.api.nvim_set_hl(0, "BlinkCmpLabelMatch", { fg = "#378ADD", bold = true })
-		vim.api.nvim_set_hl(0, "BlinkCmpGhostText", { link = "Comment" })
-		vim.api.nvim_set_hl(0, "BlinkCmpDoc", { link = "NormalFloat" })
-		vim.api.nvim_set_hl(0, "BlinkCmpDocBorder", { link = "FloatBorder" })
-		vim.api.nvim_set_hl(0, "BlinkCmpSignatureHelp", { link = "NormalFloat" })
-		vim.api.nvim_set_hl(0, "BlinkCmpSignatureHelpBorder", { link = "FloatBorder" })
-
-		require("blink.cmp").setup(opts)
-	end,
-
 	---@module 'blink.cmp'
 	---@type blink.cmp.Config
 	opts = {
@@ -152,73 +139,7 @@ return {
 			},
 		},
 
-		completion = {
-			menu = {
-				border = "rounded",
-				scrollbar = true,
-				scrolloff = 2,
-				max_height = 15,
-
-				-- Avoid menu overlapping multi-line ghost text by flipping direction
-				-- Recipe: "Avoid multi-line completion ghost text"
-				direction_priority = function()
-					local ctx = require("blink.cmp").get_context()
-					local item = require("blink.cmp").get_selected_item()
-					if ctx == nil or item == nil then
-						return { "s", "n" }
-					end
-
-					local text = item.textEdit ~= nil and item.textEdit.newText or item.insertText or item.label
-					local multi_line = text:find("\n") ~= nil
-
-					if multi_line or vim.g.blink_cmp_upwards_ctx_id == ctx.id then
-						vim.g.blink_cmp_upwards_ctx_id = ctx.id
-						return { "n", "s" }
-					end
-					return { "s", "n" }
-				end,
-
-				draw = {
-					columns = {
-						{ "kind_icon", gap = 1 },
-						{ "label", "label_description", gap = 1 },
-						{ "kind", gap = 1 },
-						{ "source_name" },
-					},
-					treesitter = { "lsp" },
-				},
-			},
-
-			documentation = {
-				auto_show = true,
-				auto_show_delay_ms = 200,
-				window = {
-					border = "rounded",
-					max_width = 80,
-					max_height = 20,
-				},
-			},
-
-			-- Ghost text: inline preview styled via Comment highlight group
-			ghost_text = {
-				enabled = true,
-				show_with_selection = true,
-				show_without_selection = false,
-				show_with_menu = true,
-				show_without_menu = true,
-			},
-
-			accept = {
-				auto_brackets = { enabled = true },
-			},
-
-			list = {
-				selection = {
-					preselect = true,
-					auto_insert = false,
-				},
-			},
-		},
+		completion = { documentation = { auto_show = false } },
 
 		-- Experimental signature help
 		signature = {
